@@ -1,0 +1,61 @@
+h1 {
+    padding-left: 12vw;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    height: 48vh;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    background: rgb(247, 247, 247);
+    border: 1px solid rgba(62, 166, 86, 0.8);
+    box-shadow:
+        0pt 2px 5px rgba(105, 108, 109, 0.7),
+        0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    border-radius: 5px;
+}
+
+.button {
+    cursor: pointer;
+    background: rgb(52, 136, 62);
+    padding: 2px 5px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid rgb(15, 61, 27);
+    margin-bottom: 10px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    box-shadow:
+        0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+        0px 0px 0px 3px rgb(254, 254, 254),
+        0px 5px 3px 3px rgb(210, 210, 210);
+    transition: all 0.2s linear;
+}
+
+input {
+    padding: 10px 5px 10px 12px;
+    border: 1px solid rgb(37, 136, 83);
+    box-sizing: content-box;
+    border-radius: 3px;
+    box-shadow: 0px 1px 4px 0px rgba(57, 115, 62, 0.6) inset;
+    transition: all 0.2s linear;
+}
+
+input:active,
+input:focus {
+    border: 1px solid rgba(68, 195, 106, 0.7);
+    background: rgba(209, 238, 202, 0.2);
+    box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+}
+
+
+input:required:valid {
+    border-color: green;
+    border: 3px solid green;
+}
