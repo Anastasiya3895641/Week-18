@@ -12,19 +12,18 @@
     <h1>Форма регистрации</h1>
     <form class="form" name="form" id="form">
         <input type="text" placeholder="Введите ваше имя" id="first_name" name="name" class="input" required />
-        <input type="tel" placeholder="Введите ваш номер" id="number" class="input" required />
-        <input type="email" placeholder="Введите ваш email" id="email" class="input" />
+        <input type="tel" placeholder="Введите ваш номер" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
+            id="number" class="input" required />
+        <input type="email" placeholder="Введите ваш email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" id="email"
+            class="input" required />
         <input type="password" placeholder="Введите ваш пароль" id="password" class="input" minlength="7" maxlength="20"
-            min="7" max="20" required />
+            required />
         <input type="password" placeholder="Повторите пароль" id="password2" class="input" minlength="7" maxlength="20"
-            min="7" max="20" required />
+            required />
         <div id="errorMessage" class="errorMessage"></div>
-        <button type="button" class="button" onclick="checkAll() " id="click_registr">Зарегистрироваться</button>
+        <button type="submit" class="button" id="click_registr">Зарегистрироваться</button>
     </form>
 </body>
 <script src="./test.js"></script>
 
 </html>
-
-//pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"//
-pattern="^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$"

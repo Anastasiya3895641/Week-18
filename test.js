@@ -1,90 +1,89 @@
 let errors = [];
 
+const number = document.getElementById('number').value;
+const click_registr= document.getElementById('click_registr').value;
+let email  = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+
+
 function checkValidity(input) {
 
     let validity = input.validity;
-    /*let emailFormat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
-    let telFormat = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-    let passFormat = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;*/
+
 
     if (validity.valueMissing) 
-    { errors.push('Вы не заполнили поле' + input.placeholder); }
+    { errors.push('Вы не заполнили поле - ' + input.placeholder);
+    return false; }
 
-    if (validity.patternMismatch) 
-		{ errors.push('Неверный формат заполнения'); }
+    if (validity.typeMismatch) 
+		{ errors.push('Неверный формат заполнения');
+        return false; }
 
 	if (validity.rangeOverflow) 
-		{ let max = getAttributeValue (input, 'max') ;
-			errors.push('Максимальное значение не может быть больше чем ' + max); }
+		{ const max = getAttributeValue (input, 'max') ;
+			errors.push('Максимальное значение не может быть больше чем ' + max);
+            return false; }
     
 	if (validity.rangeUnderflow) 
-		{ let min = getAttributeValue (input, 'min') ;;
-			errors.push('Минимальное значение не может быть больше чем ' + min); }
+		{ const min = getAttributeValue (input, 'min') ;;
+			errors.push('Минимальное значение не может быть больше чем ' + min);
+            return false; }
+
+};
 
 
-    if (document.getElementById('password').value == document.getElementById('password2').value) {
-            }
-            else {
-                errors.push('Пароли не совпадают');
-                return false;
-            }
-        
-    
-            /*if (emailFormat.test(document.getElementById('emailField').value)) {
-                return true;
-            }
-            else {
-                errors.push("Ваш адрес электронной почты введен неверно!");
-                return false;
-            }
+function checkForm() {
 
-            if (telFormat.test(document.getElementById('number').value)) {
-                return true;
-            }
-            else {
-                errors.push("Ваш телефон введен неверно!");
-                return false;
-            }*/
+        let tel = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+        let pass = /^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
 
-
-}
-
-function ValidateEmail() {
-    let emailFormat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
-    if (emailFormat.math(document.getElementById('email').value)) {
-        return true;
+        if (document.getElementById('password').value == document.getElementById('password2').value) {
+            
     }
-    else {
-        errors.push("Ваш адрес электронной почты введен неверно!");
+        else {
+        errors.push('Пароли не совпадают');
         return false;
-    }
-}
-ValidateEmail()
+};
+    if (tel.test(document.getElementById("number").value)) { }
+    
 
-
-/*function ValidateTel(telField) {
-    let telFormat = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-    if (telField.value.test(telFormat)) {
-        return true;
-    }
     else {
+        errors.push('Ваш телефон введен неверно!');
+    return false;
+    };
+
+    if (pass.test(document.getElementById("password").value)) { }
+    
+
+    else {
+        errors.push(
+        'Ваш пароль введен неверно, используйте заглавные буквы и знаки - !@#$&*!');
+    return false;
+    };
+
+};
+
+
+/*function ValidateTel() {
+    let telFormat = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+    let valid = telFormat.test(number.value);
+    if (!valid) {
+
         errors.push("Ваш телефон введен неверно!");
         return false;
     }
-}
+    return true;
+};*/
 
-function ValidatePassword(passField) {
+/*function ValidatePassword() {
     let passFormat = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
-    if (passField.value.test(passFormat)) {
-        return true;
-    }
-    else {
+    let valid = passFormat.test((document.getElementById('password').value));
+    if (!valid) {
         errors.push("Ваш пароль введен неверно, используйте заглавные буквы и знаки - !@#$&*");
         return false;
     }
-}*/
-
-
+    return true;
+};*/
 
 
 
@@ -98,33 +97,32 @@ function checkAll() {
         checkValidity(input); 
     }
 
+    checkForm();
 
 
-    let errorDiv = document.querySelector('.errorMessage');
-    errorDiv.innerHTML = errors.join('. \n');
-}
+   const errorDiv = document.querySelector('.errorMessage');
+    errorDiv.innerHTML = errors.join('</br>');
 
-function checkEmail() {
-	
-    let inputs = document.getElementById('email').value;
-
-
-    for (let email of inputs) {
-        checkValidity(email); 
+    if (errorDiv.innerHTML === ''){
+        alert('Спасибо за регистрацию, ' + document.getElementById('first_name').value);
     }
 
+    
+};
 
 
-    let errorDiv = document.querySelector('.errorMessage');
-    errorDiv.innerHTML = errors.join('. \n');
-}
-
-
-
+console.log(checkForm())
 
 
 
-document.getElementById('click_registr').addEventListener('click', checkEmail())
+    /*let emailFormat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+    let telFormat = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+    let passFormat = /pattern="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"/;*/
+
+
+
+
+document.getElementById('click_registr').addEventListener('click', checkAll)
 
 
 
