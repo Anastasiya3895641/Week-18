@@ -1,0 +1,22 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 18</title>
+</head>
+
+<body>
+    <form>
+        <label for="autor">Имя пользовательницы</label>
+        <input type="text" class="inputs" id="author" name="author" placeholder="Введите имя" value=""></br>
+        <label for="comment">Комментарий</label>
+        <textarea type="text" class="inputs" id="comment" name="comment" placeholder="Введите комментарий" cols="30"
+            rows="10"></textarea></br>
+        <input type="button" id="button" name="button" value="Отправить сообщение на форум"
+            onclick="checkMessage()" /></br>
+        <div id="message" class="message"></div>
+    </form>
+    <script src="./3_forum.js"></script>
+</body>
+
+</html>
