@@ -3,19 +3,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 18</title>
+    <style>
+        .message {
+            width: 15vw;
+        }
+
+        .form {
+            background-color: rgba(15, 168, 161, 0.804);
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .inputs {
+            display: flex;
+        }
+    </style>
 </head>
 
 <body>
-    <form>
-        <label for="autor">Имя пользовательницы</label>
-        <input type="text" class="inputs" id="author" name="author" placeholder="Введите имя" value=""></br>
-        <label for="comment">Комментарий</label>
-        <textarea type="text" class="inputs" id="comment" name="comment" placeholder="Введите комментарий" cols="30"
-            rows="10"></textarea></br>
-        <input type="button" id="button" name="button" value="Отправить сообщение на форум"
-            onclick="checkMessage()" /></br>
-        <div id="message" class="message"></div>
-    </form>
+    <div class="form">
+        <form>
+            <label for="autor">Имя пользовательницы</label>
+            <input type="text" class="inputs" id="author" name="author" placeholder="Введите имя" value=""
+                required></br>
+            <label for="ava">Аватарка</label>
+            <input type="text" class="inputs" id="ava" name="ava" placeholder="Ссылка на аватарку" value=""
+                required></br>
+            <label for="comment">Комментарий</label>
+            <textarea type="text" class="inputs" id="comment" name="comment" placeholder="Введите комментарий" cols="30"
+                rows="10"></textarea></br>
+            <input type="button" id="button" name="button" value="Отправить сообщение на форум"
+                onclick="checkMessage()" /></br>
+            <div id="message" class="message"></div>
+        </form>
+    </div>
     <script src="./3_forum.js"></script>
 </body>
 
